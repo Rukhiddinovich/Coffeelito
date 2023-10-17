@@ -1,6 +1,4 @@
 import 'package:coffeelito/cubit/tab_box/tab_box_cubit.dart';
-import 'package:coffeelito/presentation/tab_box/home/product_screen.dart';
-import 'package:coffeelito/presentation/tab_box/order/order_screen.dart';
 import 'package:coffeelito/presentation/tab_box_admin/home/product_screen_admin.dart';
 import 'package:coffeelito/presentation/tab_box_admin/order/order_screen.dart';
 import 'package:coffeelito/utils/colors.dart';
@@ -14,7 +12,6 @@ class TabBoxAdmin extends StatelessWidget {
   TabBoxAdmin({super.key});
 
   List<Widget> pages = [
-    const ProductScreenAdmin(),
     const ProductScreenAdmin(),
     const OrderScreenAdmin(),
   ];
@@ -55,13 +52,6 @@ class TabBoxAdmin extends StatelessWidget {
                 icon: Icon(CupertinoIcons.cart_fill,
                     color: AppColors.white, size: 28.r),
                 activeIcon: Icon(CupertinoIcons.cart_fill,
-                    color: const Color(0xFFBE9173), size: 28.r),
-                label: '•',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.person_fill,
-                    color: AppColors.white, size: 28.r),
-                activeIcon: Icon(CupertinoIcons.person_fill,
                     color: const Color(0xFFBE9173), size: 28.r),
                 label: '•',
               ),

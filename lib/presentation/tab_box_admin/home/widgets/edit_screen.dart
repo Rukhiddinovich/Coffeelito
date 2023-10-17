@@ -31,22 +31,36 @@ class _EditScreenState extends State<EditScreen> {
         child: Column(
           children: [
             20.ph,
-            GlobalTextField(hintText: "Name", textAlign: TextAlign.start, controller: TextEditingController(), maxLines: 1),
+            GlobalTextField(
+                hintText: "Name",
+                textAlign: TextAlign.start,
+                controller: TextEditingController(),
+                maxLines: 1),
             20.ph,
-            GlobalTextField(hintText: "Description", textAlign: TextAlign.start, controller: TextEditingController(), maxLines: 1),
+            GlobalTextField(
+                hintText: "Description",
+                textAlign: TextAlign.start,
+                controller: TextEditingController(),
+                maxLines: 1),
             20.ph,
-            GlobalTextField(hintText: "Price", textAlign: TextAlign.start, controller: TextEditingController(), maxLines: 1),
+            GlobalTextField(
+                hintText: "Price",
+                textAlign: TextAlign.start,
+                controller: TextEditingController(),
+                maxLines: 1),
             20.ph,
-            images.isEmpty?ElevatedButton(onPressed: (){
-              showGlobalBottomSheetDialog(context);
-            }, child: const Text("Select image")):
-                CachedNetworkImage(imageUrl: images.first),
-            ElevatedButton(onPressed: (){
-            }, child: const Text("Delete product")),
+            images.isEmpty
+                ? ElevatedButton(
+                    onPressed: () {
+                      showGlobalBottomSheetDialog(context);
+                    },
+                    child: const Text("Select image"))
+                : CachedNetworkImage(imageUrl: images.first),
+            ElevatedButton(
+                onPressed: () {}, child: const Text("Delete product")),
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton(onPressed: (){
-              }, child: Text("Edit")),
+              child: ElevatedButton(onPressed: () {}, child: Text("Edit")),
             )
           ],
         ),
@@ -54,7 +68,7 @@ class _EditScreenState extends State<EditScreen> {
     );
   }
 
-  void showGlobalBottomSheetDialog(BuildContext context){
+  void showGlobalBottomSheetDialog(BuildContext context) {
     showModalBottomSheet(
       backgroundColor: Colors.transparent,
       context: context,
@@ -72,9 +86,9 @@ class _EditScreenState extends State<EditScreen> {
           child: Column(
             children: [
               ListTile(
-                onTap: () async{
+                onTap: () async {
                   await getFromGallery(context);
-                  if(context.mounted) {
+                  if (context.mounted) {
                     Navigator.pop(context);
                   }
                 },
@@ -86,9 +100,9 @@ class _EditScreenState extends State<EditScreen> {
                     style: TextStyle(color: Colors.white, fontSize: 20.sp)),
               ),
               ListTile(
-                onTap: ()async {
+                onTap: () async {
                   await getFromCamera(context);
-                  if(context.mounted) {
+                  if (context.mounted) {
                     Navigator.pop(context);
                   }
                 },
@@ -153,5 +167,3 @@ class _EditScreenState extends State<EditScreen> {
     }
   }
 }
-
-

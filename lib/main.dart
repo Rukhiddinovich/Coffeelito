@@ -16,13 +16,11 @@ import 'data/local/storage_repository/storage_repository.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // Firebase.initializeApp();
+  await Firebase.initializeApp();
   await StorageRepository.getInstance();
   LocalDatabase.getInstance;
 
-  runApp(
-    App(orderService: OrderService(), coffeeService: CoffeeService()),
-  );
+  runApp(App(orderService: OrderService(), coffeeService: CoffeeService()));
 }
 
 class App extends StatelessWidget {
@@ -45,7 +43,7 @@ class App extends StatelessWidget {
       ],
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context)=>TabCubit()),
+          BlocProvider(create: (context) => TabCubit()),
           BlocProvider(
             create: (context) => OrderBloc(
               orderRepository: context.read<OrderRepository>(),
