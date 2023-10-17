@@ -1,6 +1,9 @@
 import 'package:coffeelito/utils/colors.dart';
+import 'package:coffeelito/utils/icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SearchLogic extends StatelessWidget {
   const SearchLogic({super.key, required this.controller});
@@ -14,6 +17,7 @@ class SearchLogic extends StatelessWidget {
       textInputAction: TextInputAction.search,
       controller: controller,
       decoration: InputDecoration(
+        prefixIcon: Icon(CupertinoIcons.search,size: 25.r,color: Colors.white),
         hintText: "Search coffee",
         hintStyle:TextStyle(
               fontWeight: FontWeight.w400,

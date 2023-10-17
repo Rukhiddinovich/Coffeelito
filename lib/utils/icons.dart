@@ -8,9 +8,10 @@ class AppIcons {
   static const String coffeePng = "assets/images/coffee_png.png";
   static const String coffeePng1 = "assets/images/coffee_png1.png";
   static const String coffeePng2 = "assets/images/coffee_png2.png";
+  static const String profile = "assets/images/profile.png";
 
   // svg
-  static const String profile = "assets/svg/profile.svg";
+  // static const String profile = "assets/svg/profile.svg";
   static const String arrowDown = "assets/svg/arrow_down.svg";
   static const String arrowLeft = "assets/svg/arrow_left.svg";
   static const String cart = "assets/svg/cart.svg";
