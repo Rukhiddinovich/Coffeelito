@@ -1,27 +1,25 @@
 part of 'category_bloc.dart';
 
-abstract class CategoryState extends Equatable{}
+class CategoryState extends Equatable {
+  final FormStatus status;
+  final List<CategoryModel> categoryModel;
+  final String statusText;
 
-class CategoryInitial extends CategoryState {
+  const CategoryState(
+      {required this.statusText,
+      required this.status,
+      required this.categoryModel});
+
+  CategoryState copyWith({
+    FormStatus? status,
+    List<CategoryModel>? categoryModel,
+    String? statusText,
+  }) =>
+      CategoryState(
+          statusText: statusText ?? this.statusText,
+          status: status ?? this.status,
+          categoryModel: categoryModel ?? this.categoryModel);
+
   @override
-
-  List<Object?> get props => [];
-}
-class CategoryUpdateState extends CategoryState {
-  @override
-
-  List<Object?> get props => [];
-}
-class CategoryLoadingState extends CategoryState {
-  @override
-
-  List<Object?> get props => [];
-}
-
-class CategoryError extends CategoryState {
-  final String errorText;
-  CategoryError({required this.errorText});
-  @override
-
-  List<Object?> get props => [errorText];
+  List<Object?> get props => [status, statusText, categoryModel];
 }

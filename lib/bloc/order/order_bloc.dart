@@ -13,18 +13,18 @@ part 'order_state.dart';
 
 class OrderBloc extends Bloc<OrderEvent, OrderState> {
 
-  OrderBloc({required this.orderRepo}) : super(OrderInitial()) {
+  OrderBloc({required this.orderRepository}) : super(OrderInitial()) {
     on<AddOrderEvent>(addOrder);
     on<DeleteOrderEvent>(deleteOrder);
     on<GetOrderEvent>(listenOrders);
   }
 
-  final OrderRepo orderRepo;
+  final OrderRepository orderRepository;
   List<OrderModel> userOrders=[];
 
   Future<void> addOrder(AddOrderEvent event,Emitter<OrderState> emit)async{
     emit(OrderLoadingState());
-    UniversalData universalData  = await orderRepo.addOrder(orderModel: event.orderModel);
+    UniversalData universalData  = await orderRepository.addOrder(orderModel: event.orderModel);
     if(universalData.error.isNotEmpty){
       emit(OrderErrorState(errorText: universalData.error));
     }
@@ -36,7 +36,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
 
   Future<void> deleteOrder(DeleteOrderEvent event,Emitter<OrderState> emit)async{
     emit(OrderLoadingState());
-    UniversalData universalData = await orderRepo.deleteOrder(orderId: event.orderId);
+    UniversalData universalData = await orderRepository.deleteOrder(orderId: event.orderId);
     if(universalData.error.isNotEmpty){
       emit(OrderErrorState(errorText: universalData.error));
     }

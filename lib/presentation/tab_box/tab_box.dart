@@ -1,5 +1,5 @@
 import 'package:coffeelito/cubit/tab_box/tab_box_cubit.dart';
-import 'package:coffeelito/presentation/tab_box/home/home_screen.dart';
+import 'package:coffeelito/presentation/tab_box/home/product_screen.dart';
 import 'package:coffeelito/presentation/tab_box/order/order_screen.dart';
 import 'package:coffeelito/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,8 +12,8 @@ class TabBox extends StatelessWidget {
   TabBox({super.key});
 
   List<Widget> pages = [
-    const HomeScreen(),
-    const HomeScreen(),
+    const ProductScreen(),
+    const ProductScreen(),
     const OrderScreen(),
   ];
 

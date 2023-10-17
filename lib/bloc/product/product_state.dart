@@ -6,27 +6,22 @@ class ProductInitial extends ProductState {
   @override
   List<Object?> get props => [];
 }
-//
-// class ProductSuccessState extends ProductState{
-//   @override
-//   List<Object?> get props => [];
-// }
 
-class ProductUpdateState extends ProductState{
+class ProductUpdateState extends ProductState {
   @override
   List<Object?> get props => [];
 }
 
-class ProductLoadingState extends ProductState{
+class ProductLoadingState extends ProductState {
   @override
   List<Object?> get props => [];
 }
 
-class ProductErrorState extends ProductState{
+class ProductErrorState extends ProductState {
   final String errorText;
+
   ProductErrorState({required this.errorText});
 
   @override
   List<Object?> get props => [errorText];
 }
-

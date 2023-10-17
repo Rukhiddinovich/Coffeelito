@@ -1,6 +1,6 @@
 import 'package:coffeelito/presentation/on_boarding/on_boarding_screen.dart';
 import 'package:coffeelito/presentation/splash/splash_screen.dart';
-import 'package:coffeelito/presentation/tab_box/home/home_screen.dart';
+import 'package:coffeelito/presentation/tab_box/home/product_screen.dart';
 import 'package:coffeelito/presentation/tab_box/home/widgets/product_detail_screen.dart';
 import 'package:coffeelito/presentation/tab_box/tab_box.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ class AppRoutes {
     switch (settings.name) {
       case RouteNames.homeScreen:
         return MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
+          builder: (context) => const ProductScreen(),
         );
       case RouteNames.detailScreen:
         return MaterialPageRoute(

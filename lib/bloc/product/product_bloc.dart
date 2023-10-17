@@ -146,5 +146,4 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     });
     emit(ProductUpdateState());
   }
-
 }
