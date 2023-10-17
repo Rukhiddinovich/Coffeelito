@@ -1,3 +1,4 @@
+import 'package:coffeelito/data/local/storage_repository/storage_repository.dart';
 import 'package:coffeelito/presentation/tab_box/app_routes.dart';
 import 'package:coffeelito/presentation/widgets/global_button.dart';
 import 'package:coffeelito/utils/colors.dart';
@@ -57,8 +58,51 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 GlobalButton(
                     text: "Get Started",
                     onTap: () {
-                      Navigator.pushReplacementNamed(
-                          context, RouteNames.tabBox);
+                      showDialog(
+                          barrierDismissible: true,
+                          context: context,
+                          builder: (context) {
+                            return Scaffold(
+                                backgroundColor: Colors.transparent,
+                                body: AlertDialog(
+                                    content: Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10.r)),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            ElevatedButton(
+                                                onPressed: () async {
+                                                  if (context.mounted) {
+                                                    await StorageRepository
+                                                        .putBool(
+                                                            "isAdmin", true);
+                                                    Navigator
+                                                        .pushReplacementNamed(
+                                                            context,
+                                                            RouteNames
+                                                                .tabBoxAdmin);
+                                                  }
+                                                },
+                                                child: const Text("Admin")),
+                                            ElevatedButton(
+                                                onPressed: () async {
+                                                  if (context.mounted) {
+                                                    await StorageRepository
+                                                        .putBool(
+                                                            "isAdmin", false);
+                                                    Navigator
+                                                        .pushReplacementNamed(
+                                                            context,
+                                                            RouteNames.tabBox);
+                                                  }
+                                                },
+                                                child: const Text("Client"))
+                                          ],
+                                        ))));
+                          });
                     }),
                 12.ph
               ],

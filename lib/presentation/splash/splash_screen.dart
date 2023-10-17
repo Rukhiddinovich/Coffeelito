@@ -17,10 +17,12 @@ class _SplashScreenState extends State<SplashScreen> {
   _init()async{
     await Future.delayed(const Duration(seconds: 2));
     if(StorageRepository.getBool("isStart")){
-      if(context.mounted){
+      if(context.mounted && StorageRepository.getBool("isAdmin")){
+        Navigator.pushReplacementNamed(context, RouteNames.tabBoxAdmin);
+      } else{
         Navigator.pushReplacementNamed(context, RouteNames.tabBox);
       }
-    }else{
+      }else{
       await StorageRepository.putBool("isStart", true);
       if(context.mounted){
         Navigator.pushReplacementNamed(context, RouteNames.onBoarding);
