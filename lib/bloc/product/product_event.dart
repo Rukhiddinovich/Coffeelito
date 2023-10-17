@@ -8,7 +8,7 @@ class GetProductsEvent extends ProductEvent {
 }
 
 class AddProductEvent extends ProductEvent {
-  final ProductModelForSql productModelForSql;
+  final CoffeeModelSql productModelForSql;
 
   AddProductEvent({required this.productModelForSql});
 

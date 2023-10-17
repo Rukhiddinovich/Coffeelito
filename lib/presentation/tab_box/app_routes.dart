@@ -5,11 +5,10 @@ import 'package:coffeelito/presentation/tab_box/home/widgets/product_detail_scre
 import 'package:coffeelito/presentation/tab_box/tab_box.dart';
 import 'package:flutter/material.dart';
 
-
 class RouteNames {
-  static const String homeScreen = "/home";
-  static const String onBoarding = "/on_boarding";
   static const String splashScreen = "/";
+  static const String homeScreen = "/home_screen";
+  static const String onBoarding = "/on_boarding";
   static const String tabBox = "/tab_box";
   static const String detailScreen = "/detail_screen";
 }
@@ -41,7 +40,7 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const Scaffold(
             body: Center(
-              child: Text("Route not found!"),
+              child: Text("Route not available!"),
             ),
           ),
         );

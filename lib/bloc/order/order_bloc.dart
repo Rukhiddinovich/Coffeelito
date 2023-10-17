@@ -14,15 +14,15 @@ part 'order_state.dart';
 class OrderBloc extends Bloc<OrderEvent, OrderState> {
 
   OrderBloc({required this.orderRepository}) : super(OrderInitial()) {
-    on<AddOrderEvent>(addOrder);
-    on<DeleteOrderEvent>(deleteOrder);
-    on<GetOrderEvent>(listenOrders);
+    on<AddOrderEvent>(_addOrder);
+    on<DeleteOrderEvent>(_deleteOrder);
+    on<GetOrderEvent>(_listenOrders);
   }
 
   final OrderRepository orderRepository;
   List<OrderModel> userOrders=[];
 
-  Future<void> addOrder(AddOrderEvent event,Emitter<OrderState> emit)async{
+  _addOrder(AddOrderEvent event,Emitter<OrderState> emit)async{
     emit(OrderLoadingState());
     UniversalData universalData  = await orderRepository.addOrder(orderModel: event.orderModel);
     if(universalData.error.isNotEmpty){
@@ -34,7 +34,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     emit(OrderInitial());
   }
 
-  Future<void> deleteOrder(DeleteOrderEvent event,Emitter<OrderState> emit)async{
+  _deleteOrder(DeleteOrderEvent event,Emitter<OrderState> emit)async{
     emit(OrderLoadingState());
     UniversalData universalData = await orderRepository.deleteOrder(orderId: event.orderId);
     if(universalData.error.isNotEmpty){
@@ -67,7 +67,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
   }
 
 
-  listenOrders(GetOrderEvent event,Emitter<OrderState> emit) async {
+  _listenOrders(GetOrderEvent event,Emitter<OrderState> emit) async {
     listenOrdersList(event.userId).listen((List<OrderModel> orders) {
       userOrders = orders;
       debugPrint("CURRENT USER ORDERS LENGTH:${userOrders.length}");

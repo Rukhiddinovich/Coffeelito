@@ -26,7 +26,7 @@ class TabBox extends StatelessWidget {
         children: pages,
       ),
       bottomNavigationBar: SizedBox(
-        height: 70,
+        height: 70.h,
         child: ClipRRect(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20.r), topRight: Radius.circular(20.r)),

@@ -41,7 +41,7 @@ class _OrderScreenState extends State<OrderScreen> {
             child: ListView(
               physics: const BouncingScrollPhysics(),
               children: [
-                ...List.generate(8, (index) {
+                ...List.generate(2, (index) {
                   return Container(
                     margin:
                         EdgeInsets.symmetric(vertical: 6.h, horizontal: 24.w),
@@ -53,25 +53,26 @@ class _OrderScreenState extends State<OrderScreen> {
                           fit: BoxFit.cover,
                         ),
                         12.pw,
-                        RichText(
-                          text: TextSpan(
-                            text: "Cappucino\n",
-                            style: TextStyle(
-                                fontFamily: "Poppins",
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.black),
-                            children: [
-                              TextSpan(
-                                text: "with Chocolate",
-                                style: TextStyle(
-                                    fontFamily: "Poppins",
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.grey),
-                              ),
-                            ],
-                          ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Cappucino",
+                              style: TextStyle(
+                                  fontFamily: "Poppins",
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.black),
+                            ),
+                            Text(
+                              "with Chocolate",
+                              style: TextStyle(
+                                  fontFamily: "Poppins",
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.grey),
+                            ),
+                          ],
                         ),
                         Expanded(
                           child: Row(
@@ -140,7 +141,7 @@ class _OrderScreenState extends State<OrderScreen> {
                 }),
                 Container(
                     height: 4.h,
-                    decoration: BoxDecoration(color: Color(0xFFF4F4F4)))
+                    decoration: const BoxDecoration(color: Color(0xFFF4F4F4)))
               ],
             ),
           ),
@@ -151,10 +152,11 @@ class _OrderScreenState extends State<OrderScreen> {
               children: [
                 Text(
                   "Payment Summary",
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium!
-                      .copyWith(color: AppColors.C_2F2D2C, fontSize: 20.sp),
+                  style: TextStyle(
+                      fontFamily: "Poppins",
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.C_2F2D2C),
                 ),
                 16.ph,
                 Row(
@@ -162,17 +164,19 @@ class _OrderScreenState extends State<OrderScreen> {
                   children: [
                     Text(
                       "Price",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .copyWith(color: AppColors.C_2F2D2C),
+                      style: TextStyle(
+                          fontFamily: "Poppins",
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.C_2F2D2C),
                     ),
                     Text(
                       "\$ 4.53",
-                      style: Theme.of(context)
-                          .textTheme
-                          .labelLarge!
-                          .copyWith(color: AppColors.C_2F2D2C),
+                      style: TextStyle(
+                          fontFamily: "Poppins",
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.C_2F2D2C),
                     ),
                   ],
                 ),
@@ -182,39 +186,56 @@ class _OrderScreenState extends State<OrderScreen> {
                   children: [
                     Text(
                       "Delivery Free",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .copyWith(color: AppColors.C_2F2D2C),
+                      style: TextStyle(
+                          fontFamily: "Poppins",
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.C_2F2D2C),
                     ),
-                    Text(
-                      "\$ 1",
-                      style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                            color: AppColors.C_2F2D2C,
-                          ),
+                    Row(
+                      children: [
+                        Text(
+                          "\$ 2.0",
+                          style: TextStyle(
+                              fontFamily: "Poppins",
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.C_2F2D2C),
+                        ),
+                        8.pw,
+                        Text(
+                          "\$ 1.0",
+                          style: TextStyle(
+                              fontFamily: "Poppins",
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.C_2F2D2C),
+                        ),
+                      ],
                     ),
                   ],
                 ),
                 16.ph,
-                const Divider(
-                  thickness: 1,
-                ),
+                const Divider(height: 1),
                 16.ph,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Total Price",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .copyWith(color: AppColors.C_2F2D2C),
+                      "Total Payment",
+                      style: TextStyle(
+                          fontFamily: "Poppins",
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.C_2F2D2C),
                     ),
                     Text(
                       "\$ 5.53",
-                      style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                            color: AppColors.C_2F2D2C,
-                          ),
+                      style: TextStyle(
+                          fontFamily: "Poppins",
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.C_2F2D2C),
                     ),
                   ],
                 ),

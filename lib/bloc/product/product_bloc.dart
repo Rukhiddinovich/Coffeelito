@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffeelito/data/local/db/local_database.dart';
 import 'package:coffeelito/data/models/product/product_model.dart';
-import 'package:coffeelito/data/models/product/product_model_for_sql.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,19 +12,19 @@ part 'product_state.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   ProductBloc() : super(ProductInitial()) {
-    on<GetProductsEvent>(listenProducts);
-    on<GetAllProductsEvent>(getAllProducts);
-    on<AddProductEvent>(addProduct);
-    on<DeleteProductEvent>(deleteProduct);
-    on<DeleteAllProductsEvent>(deleteAllProduct);
-    on<DecrementProductEvent>(decrementProduct);
-    on<IncrementProductEvent>(incrementProduct);
-    on<CheckProductEvent>(checkProduct);
+    on<GetProductsEvent>(_listenProducts);
+    on<GetAllProductsEvent>(_getAllProducts);
+    on<AddProductEvent>(_addProduct);
+    on<DeleteProductEvent>(_deleteProduct);
+    on<DeleteAllProductsEvent>(_deleteAllProduct);
+    on<DecrementProductEvent>(_decrementProduct);
+    on<IncrementProductEvent>(_incrementProduct);
+    on<CheckProductEvent>(_checkProduct);
     on<ChangeCateIdProductsEvent>(changeCategoryId);
     on<UpdateEvent>(update);
   }
 
-  List<ProductModelForSql> productsSql=[];
+  List<CoffeeModelSql> productsSql=[];
   String searchText='';
   List<CoffeeModel> products=[];
   String categoryId = "";
@@ -41,7 +40,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     emit(ProductInitial());
   }
 
-  Future<void> addProduct(AddProductEvent event,Emitter<ProductState> emit)async{
+  _addProduct(AddProductEvent event,Emitter<ProductState> emit)async{
     try{
       emit(ProductLoadingState());
       await LocalDatabase.insertProduct(event.productModelForSql);
@@ -52,7 +51,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     emit(ProductInitial());
   }
 
-  Future<void> deleteProduct(DeleteProductEvent event,Emitter<ProductState> emit)async{
+  _deleteProduct(DeleteProductEvent event,Emitter<ProductState> emit)async{
     try{
       emit(ProductLoadingState());
       await LocalDatabase.deleteProduct(event.id);
@@ -63,7 +62,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     emit(ProductInitial());
   }
 
-  Future<void> decrementProduct(DecrementProductEvent event,Emitter<ProductState> emit)async{
+  _decrementProduct(DecrementProductEvent event,Emitter<ProductState> emit)async{
     try{
       emit(ProductLoadingState());
       await LocalDatabase.decrementProduct(id: event.id);
@@ -74,7 +73,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     emit(ProductInitial());
   }
 
-  Future<void> incrementProduct(IncrementProductEvent event,Emitter<ProductState> emit)async{
+ _incrementProduct(IncrementProductEvent event,Emitter<ProductState> emit)async{
     try{
       emit(ProductLoadingState());
       await LocalDatabase.decrementProduct(id: event.id);
@@ -85,7 +84,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     emit(ProductInitial());
   }
 
-  Future<void> checkProduct(CheckProductEvent event,Emitter<ProductState> emit)async{
+ _checkProduct(CheckProductEvent event,Emitter<ProductState> emit)async{
     try{
       emit(ProductLoadingState());
       await LocalDatabase.checkProduct(id: event.id);
@@ -96,7 +95,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     emit(ProductInitial());
   }
 
-  Future<void> getAllProducts(GetAllProductsEvent event,Emitter<ProductState> emit)async{
+  _getAllProducts(GetAllProductsEvent event,Emitter<ProductState> emit)async{
     try{
       emit(ProductLoadingState());
       productsSql=await LocalDatabase.getAllProducts();
@@ -107,7 +106,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     emit(ProductInitial());
   }
 
-  Future<void> deleteAllProduct(DeleteAllProductsEvent event,Emitter<ProductState> emit)async{
+ _deleteAllProduct(DeleteAllProductsEvent event,Emitter<ProductState> emit)async{
     try{
       emit(ProductLoadingState());
       await LocalDatabase.deleteAllProducts();
@@ -138,7 +137,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     }
   }
 
-  listenProducts(GetProductsEvent event, Emitter<ProductState> emit)async{
+  _listenProducts(GetProductsEvent event, Emitter<ProductState> emit)async{
     emit(ProductLoadingState());
     getProducts().listen((List<CoffeeModel> product) {
       products = product;
