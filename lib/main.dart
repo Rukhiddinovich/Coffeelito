@@ -8,6 +8,7 @@ import 'package:coffeelito/data/firebase_service/order_service.dart';
 import 'package:coffeelito/data/local/db/local_database.dart';
 import 'package:coffeelito/data/repositories/order_repo/order_repo.dart';
 import 'package:coffeelito/presentation/tab_box/app_routes.dart';
+import 'package:coffeelito/presentation/tab_box/profile_screen/profile_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,10 +17,9 @@ import 'data/local/storage_repository/storage_repository.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
   await StorageRepository.getInstance();
   LocalDatabase.getInstance;
-
   runApp(App(orderService: OrderService(), coffeeService: CoffeeService()));
 }
 
@@ -77,8 +77,9 @@ class MyApp extends StatelessWidget {
         return const MaterialApp(
           debugShowCheckedModeBanner: false,
           themeMode: ThemeMode.dark,
-          initialRoute: RouteNames.splashScreen,
-          onGenerateRoute: AppRoutes.generateRoute,
+          home: ProfileScreen(),
+          // initialRoute: RouteNames.splashScreen,
+          // onGenerateRoute: AppRoutes.generateRoute,
         );
       },
     );

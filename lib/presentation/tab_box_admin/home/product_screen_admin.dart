@@ -107,7 +107,7 @@ class _ProductScreenAdminState extends State<ProductScreenAdmin> {
                                   "\$ 4.53",
                                   style: TextStyle(
                                       fontSize: 18.sp,
-                                      fontFamily: "Sora",
+                                      fontFamily: "Poppins",
                                       fontWeight: FontWeight.w600,
                                       color: AppColors.C_2F4B4E),
                                 ),

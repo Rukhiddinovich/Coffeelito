@@ -67,10 +67,7 @@ class _ProductScreenState extends State<ProductScreen> {
                           ),
                         ),
                       ),
-                      Container(
-                        height: 70.h,
-                        color: AppColors.white,
-                      ),
+                      Container(height: 70.h, color: AppColors.white),
                     ],
                   ),
                   Column(
@@ -83,8 +80,7 @@ class _ProductScreenState extends State<ProductScreen> {
                       24.ph,
                       ClipRRect(
                           borderRadius: BorderRadius.circular(20.r),
-                          child: Image.asset(AppIcons.coffeePng1,
-                              fit: BoxFit.cover))
+                          child: Image.asset(AppIcons.coffeePng1, fit: BoxFit.cover))
                     ],
                   )
                 ],
@@ -102,10 +98,7 @@ class _ProductScreenState extends State<ProductScreen> {
             backgroundColor: AppColors.white,
             flexibleSpace: FlexibleSpaceBar(
               background: Padding(
-                padding: EdgeInsets.only(
-                  top: 30.h,
-                  bottom: 8.h,
-                ),
+                padding: EdgeInsets.only(top: 30.h, bottom: 8.h),
                 child: StreamBuilder<List<CategoryModel>>(
                   stream: context.read<CategoryBloc>().getCategories(),
                   builder: (BuildContext context,
@@ -121,37 +114,25 @@ class _ProductScreenState extends State<ProductScreen> {
                                     onTap: () {
                                       setState(() {
                                         categoryId = '';
-                                        BlocProvider.of<ProductBloc>(context)
-                                            .add(ChangeCateIdProductsEvent(
-                                                cateId: categoryId));
+                                        BlocProvider.of<ProductBloc>(context).add(ChangeCateIdProductsEvent(cateId: categoryId));
                                       });
                                     },
                                     child: Container(
                                       height: 20.h,
-                                      margin: EdgeInsets.symmetric(
-                                        horizontal: 4.w,
-                                      ),
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 16.w, vertical: 10.h),
+                                      margin: EdgeInsets.symmetric(horizontal: 4.w,),
+                                      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
                                       decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(12.r),
-                                        color: categoryId.isEmpty
-                                            ? AppColors.C_C67C4E
-                                            : AppColors.white,
-                                        border: Border.all(
-                                            width: 1.w,
-                                            color: AppColors.C_C67C4E),
+                                        borderRadius: BorderRadius.circular(12.r),
+                                        color: categoryId.isEmpty ? AppColors.C_C67C4E : AppColors.white,
+                                        border: Border.all(width: 1.w, color: AppColors.C_C67C4E),
                                       ),
                                       child: Center(
-                                        child: Text(
-                                          "All",
+                                        child: Text("All",
                                           style: TextStyle(
+                                            fontFamily: "Poppins",
                                             fontSize: 14.sp,
                                             fontWeight: FontWeight.w600,
-                                            color: categoryId.isEmpty
-                                                ? AppColors.white
-                                                : AppColors.C_2F2D2C,
+                                            color: categoryId.isEmpty ? AppColors.white : AppColors.C_2F2D2C,
                                           ),
                                         ),
                                       ),
@@ -162,42 +143,26 @@ class _ProductScreenState extends State<ProductScreen> {
                                     (index) => ZoomTapAnimation(
                                       onTap: () {
                                         setState(() {
-                                          categoryId =
-                                              snapshot.data![index].categoryId;
-                                          BlocProvider.of<ProductBloc>(context)
-                                              .add(ChangeCateIdProductsEvent(
-                                                  cateId: categoryId));
+                                          categoryId = snapshot.data![index].categoryId;
+                                          BlocProvider.of<ProductBloc>(context).add(ChangeCateIdProductsEvent(cateId: categoryId));
                                         });
                                       },
                                       child: Container(
                                         height: 20.h,
-                                        margin: EdgeInsets.symmetric(
-                                            horizontal: 4.w),
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 16.w, vertical: 10.h),
+                                        margin: EdgeInsets.symmetric(horizontal: 4.w),
+                                        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
                                         decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(12.r),
-                                          color: categoryId ==
-                                                  snapshot
-                                                      .data![index].categoryId
-                                              ? AppColors.C_C67C4E
-                                              : AppColors.white,
-                                          border: Border.all(
-                                              width: 1.w,
-                                              color: AppColors.C_C67C4E),
+                                          borderRadius: BorderRadius.circular(12.r),
+                                          color: categoryId == snapshot.data![index].categoryId ? AppColors.C_C67C4E : AppColors.white,
+                                          border: Border.all(width: 1.w, color: AppColors.C_C67C4E),
                                         ),
                                         child: Center(
-                                          child: Text(
-                                            snapshot.data![index].categoryName,
+                                          child: Text(snapshot.data![index].categoryName,
                                             style: TextStyle(
+                                              fontFamily: "Poppins",
                                               fontSize: 14.sp,
                                               fontWeight: FontWeight.w600,
-                                              color: categoryId ==
-                                                      snapshot.data![index]
-                                                          .categoryId
-                                                  ? AppColors.white
-                                                  : AppColors.C_2F2D2C,
+                                              color: categoryId == snapshot.data![index].categoryId ? AppColors.white : AppColors.C_2F2D2C,
                                             ),
                                           ),
                                         ),
@@ -207,16 +172,23 @@ class _ProductScreenState extends State<ProductScreen> {
                                 ],
                               ),
                             )
-                          : const Center(
-                              child: Text("Empty"),
-                            );
+                          : Center(child: Text("Empty",
+                                  style: TextStyle(
+                                  fontSize: 20.sp,
+                                  fontFamily: "Poppins",
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.black),
+                            ));
                     }
                     if (snapshot.hasError) {
-                      return Center(
-                        child: Text(snapshot.error.toString()),
-                      );
+                      return Center(child: Text(snapshot.error.toString(),
+                        style: TextStyle(
+                            fontSize: 18.sp,
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.black),
+                      ));
                     }
-
                     return const Center(child: CircularProgressIndicator());
                   },
                 ),
@@ -232,38 +204,32 @@ class _ProductScreenState extends State<ProductScreen> {
                     List<CoffeeModel> products = [];
                     if (searchController.text.isNotEmpty) {
                       for (var element in snapshot.data!) {
-                        if (element.coffeeName
-                            .toLowerCase()
-                            .contains(searchController.text.toLowerCase())) {
+                        if (element.coffeeName.toLowerCase().contains(searchController.text.toLowerCase())) {
                           products.add(element);
                         }
                       }
                     }
                     return products.isNotEmpty
                         ? SliverPadding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 24.w, vertical: 16.h),
+                            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
                             sliver: SliverGrid(
-                              gridDelegate:
-                                  SliverGridDelegateWithMaxCrossAxisExtent(
+                              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                                 maxCrossAxisExtent: 200.h,
                                 mainAxisSpacing: 20.h,
                                 crossAxisSpacing: 20.w,
                                 childAspectRatio: 0.6.h,
                               ),
                               delegate: SliverChildBuilderDelegate(
+                                childCount: products.length,
                                 (BuildContext context, int index) {
                                   CoffeeModel coffeeModel = products[index];
                                   return ZoomTapAnimation(
                                     onTap: () {
-                                      Navigator.pushNamed(
-                                          context, RouteNames.detailScreen,
-                                          arguments: coffeeModel);
+                                      Navigator.pushNamed(context, RouteNames.detailScreen,arguments: coffeeModel);
                                     },
                                     child: Container(
                                       decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(16.r),
+                                          borderRadius: BorderRadius.circular(16.r),
                                           color: AppColors.white,
                                           boxShadow: [
                                             BoxShadow(
@@ -275,8 +241,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                       child: Column(
                                         children: [
                                           ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(16.r),
+                                            borderRadius: BorderRadius.circular(16.r),
                                             child: CachedNetworkImage(
                                               imageUrl: coffeeModel.coffeeImage,
                                               width: double.infinity,
@@ -286,71 +251,49 @@ class _ProductScreenState extends State<ProductScreen> {
                                           ),
                                           12.ph,
                                           Padding(
-                                            padding: EdgeInsets.symmetric(
-                                              horizontal: 12.w,
-                                            ),
+                                            padding: EdgeInsets.symmetric(horizontal: 12.w,),
                                             child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceAround,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                                               children: [
                                                 Text(
                                                   coffeeModel.coffeeName,
                                                   maxLines: 1,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .titleMedium!
-                                                      .copyWith(
-                                                          color: AppColors
-                                                              .C_2F2D2C,
-                                                          fontSize: 14.sp),
+                                                  overflow: TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                      fontSize: 16.sp,
+                                                      fontFamily: "Poppins",
+                                                      fontWeight: FontWeight.w600,
+                                                      color: AppColors.C_2F2D2C),
                                                 ),
                                                 Text(
                                                   coffeeModel.description,
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodySmall,
+                                                  style: TextStyle(
+                                                      fontSize: 12.sp,
+                                                      fontFamily: "Poppins",
+                                                      fontWeight: FontWeight.w600,
+                                                      color: AppColors.C_2F2D2C),
                                                   maxLines: 2,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
+                                                  overflow: TextOverflow.ellipsis,
                                                 ),
                                                 8.ph,
                                                 Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                   children: [
                                                     Text(
-                                                      coffeeModel.coffeePrice
-                                                          .toString(),
+                                                      coffeeModel.coffeePrice.toString(),
                                                       style: TextStyle(
                                                           fontSize: 18.sp,
-                                                          fontFamily: "Sora",
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          color: AppColors
-                                                              .C_2F4B4E),
+                                                          fontFamily: "Poppins",
+                                                          fontWeight: FontWeight.w600,
+                                                          color: AppColors.C_2F4B4E),
                                                     ),
                                                     Container(
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 8.w,
-                                                              vertical: 8.w),
+                                                      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.w),
                                                       decoration: BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.r),
-                                                          color: AppColors
-                                                              .C_C67C4E),
-                                                      child: SvgPicture.asset(
-                                                        AppIcons.plus,
-                                                        width: 16.w,
-                                                      ),
-                                                    )
+                                                          borderRadius: BorderRadius.circular(10.r), color: AppColors.C_C67C4E),
+                                                      child: SvgPicture.asset(AppIcons.plus, width: 16.w,),
+                                                    ),
                                                   ],
                                                 )
                                               ],
@@ -361,33 +304,20 @@ class _ProductScreenState extends State<ProductScreen> {
                                     ),
                                   );
                                 },
-                                childCount: products.length,
                               ),
                             ),
                           )
-                        : SliverToBoxAdapter(
-                            child: Center(
-                              child: Lottie.asset(AppIcons.empty),
-                            ),
-                          );
+                        : SliverToBoxAdapter(child: Center(child: Lottie.asset(AppIcons.empty),),);
                   }
                   if (snapshot.hasError) {
-                    return SliverToBoxAdapter(
-                      child: Center(
-                        child: Text(snapshot.error.toString()),
-                      ),
-                    );
+                    return SliverToBoxAdapter(child: Center(child: Text(snapshot.error.toString()),),);
                   }
-                  return const SliverToBoxAdapter(
-                    child: Center(child: CircularProgressIndicator()),
-                  );
+                  return const SliverToBoxAdapter(child: Center(child: CircularProgressIndicator()),);
                 },
               );
             },
-            listener: (context, state) {
-              if (state is ProductUpdateState) {
-                setState(() {});
-              }
+            listener: (context, state) {if (state is ProductUpdateState) {
+                setState(() {});}
             },
           )
         ],
