@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "447246245358",
+    "project_id": "coffeelito-85e11",
+    "storage_bucket": "coffeelito-85e11.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:447246245358:android:76e634ea48344109f0c2ff",
+        "android_client_info": {
+          "package_name": "uz.coffeelito"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-Bu93LAxYULi_YoZ3VcZtxPaeXFybTls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
