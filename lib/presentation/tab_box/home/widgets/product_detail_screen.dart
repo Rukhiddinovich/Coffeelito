@@ -30,10 +30,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: SvgPicture.asset(
-            AppIcons.arrowLeft,
-            width: 20.w,
-          ),
+          icon: SvgPicture.asset(AppIcons.arrowLeft, width: 20.w),
         ),
         title: Text(
           "Detail",
@@ -91,19 +88,27 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 Row(
                   children: [
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 12.w,vertical: 12.h),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 12.w, vertical: 12.h),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(14.r),
                           color: AppColors.C_F9F9F9),
-                      child: Center(child: Image.asset(AppIcons.coffeeBean,width: 20.w,height: 20.h),),
+                      child: Center(
+                        child: Image.asset(AppIcons.coffeeBean,
+                            width: 20.w, height: 20.h),
+                      ),
                     ),
                     12.pw,
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 12.w,vertical: 12.h),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 12.w, vertical: 12.h),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(14.r),
                           color: AppColors.C_F9F9F9),
-                      child: Center(child: Image.asset(AppIcons.milk,width: 20.w,height: 20.h),),
+                      child: Center(
+                        child: Image.asset(AppIcons.milk,
+                            width: 20.w, height: 20.h),
+                      ),
                     ),
                   ],
                 ),
